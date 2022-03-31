@@ -1,10 +1,10 @@
 # P-STMO
-<p align="center"><img src="demo/overview.png" alt="" /></p>
+<p align="center"><img src="demo/overview.png", width="600" alt="" /></p>
 The PyTorch implementation for <a href="https://arxiv.org/pdf/2203.07628.pdf">"P-STMO: Pre-Trained Spatial Temporal Many-to-One Model for 3D Human Pose Estimation"</a> .
 
 ## Qualitative and quantitative results
-<p align="center"><img src="demo/basketball.gif"  alt="" /></p>
-<p align="center"><img src="demo/dancing.gif"  alt="" /></p>
+<p align="center"><img src="demo/basketball.gif", width="400"  alt="" /></p>
+<p align="center"><img src="demo/dancing.gif", width="400"  alt="" /></p>
 
 | Method | MPJPE(mm) | FPS |
 |  :----:  | :----: | :----: |
@@ -105,7 +105,7 @@ python run_3dhp.py -f 81 -b 160 --train 1 --layers 3 --lr 0.0007 -lrd 0.97 --MAE
 ```
 
 ## Testing on in-the-wild videos
-To test our model on custom videos, you can use an off-the-shelf 2D keypoint detector (such as [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose)) to yield 2D poses from images and use our model to yield 3D poses. The 2D keypoint detectors are trained on [COCO](https://cocodataset.org/#home) dataset, which defines the order of human joints in a different way from Human3.6M. Thus, our model needs to be re-trained to be compatible with the existing detectors. Our model takes 2D keypoints in COCO format, which can be downloaded from [here](https://drive.google.com/file/d/1xO0Oo1yV3-5eQSIBUyIzelvaAwWpLqM5/view?usp=sharing)), as inputs and outputs 3D joint positions in Human3.6M format.
+To test our model on custom videos, you can use an off-the-shelf 2D keypoint detector (such as [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose)) to yield 2D poses from images and use our model to yield 3D poses. The 2D keypoint detectors are trained on [COCO](https://cocodataset.org/#home) dataset, which defines the order of human joints in a different way from Human3.6M. Thus, our model needs to be re-trained to be compatible with the existing detectors. Our model takes 2D keypoints in COCO format, which can be downloaded from [here](https://drive.google.com/file/d/1xO0Oo1yV3-5eQSIBUyIzelvaAwWpLqM5/view?usp=sharing), as inputs and outputs 3D joint positions in Human3.6M format.
 
 You can use our pre-trained model `PSTMOS_no_refine_48_5137_in_the_wild.pth` or train our model from scratch using the following commands.
 

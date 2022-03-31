@@ -94,10 +94,6 @@ def step(split, opt, actions, dataLoader, model, optimizer=None, epoch=None):
             #a = input_2D[:, mask]
 
 
-            if i==500 and opt.plot_MAE and split == 'test':
-                ii=20
-                plot(input_2D[ii], output_2D[ii], (action[ii],subject[ii],cam_ind[ii]), mask, mask_num, opt)
-
             loss = mpjpe_cal(output_2D, torch.cat((input_2D[:, ~mask], input_2D[:, mask]), dim=1))
             #my_loss_one = torch.mean(torch.norm(output_2D[20,180]-a[20,180], dim=1))
 
@@ -293,36 +289,8 @@ if __name__ == '__main__':
     print('INFO: Trainable parameter count:', model_params)
 
 
-    if opt.MAE_test_reload==1:
-        model_dict = model['MAE'].state_dict()
-        # model_path = sorted(glob.glob(os.path.join(opt.previous_dir, '*.pth')))
-        #
-        # MAE_test_path = []
-        # for path in model_path:
-        #     path = path.replace('\\', '/')
-        #     if path.split('/')[-1][0] == 'M':
-        #         MAE_test_path = path
-        #         print(MAE_test_path)
-        #         break
-
-        MAE_test_path = opt.previous_dir
-
-        pre_dict_MAE = torch.load(MAE_test_path)
-        for name, key in model_dict.items():
-            model_dict[name] = pre_dict_MAE[name]
-        model['MAE'].load_state_dict(model_dict)
-
     if opt.MAE_reload == 1:
         model_dict = model['trans'].state_dict()
-        # model_path = sorted(glob.glob(os.path.join(opt.previous_dir, '*.pth')))
-        #
-        # MAE_path = []
-        # for path in model_path:
-        #     path = path.replace('\\', '/')
-        #     if path.split('/')[-1][0] == 'M':
-        #         MAE_path = path
-        #         print(MAE_path)
-        #         break
 
         MAE_path = opt.previous_dir
 
@@ -330,9 +298,6 @@ if __name__ == '__main__':
 
         state_dict = {k: v for k, v in pre_dict.items() if k in model_dict.keys()}
 
-        # for name, key in model_dict.items():
-        #     #if name!=
-        #     model_dict[name] = pre_dict[name]
         model_dict.update(state_dict)
         model['trans'].load_state_dict(model_dict)
 
@@ -355,15 +320,7 @@ if __name__ == '__main__':
 
     model_dict = model['trans'].state_dict()
     if opt.reload == 1:
-        # model_path = sorted(glob.glob(os.path.join(opt.previous_dir, '*.pth')))
-        #
-        # refine_path = []
-        # for path in model_path:
-        #     path = path.replace('\\', '/')
-        #     if path.split('/')[-1][0] == 'n':
-        #         no_refine_path = path
-        #         print(no_refine_path)
-        #         break
+
         no_refine_path = opt.previous_dir
 
         pre_dict = torch.load(no_refine_path)
@@ -373,14 +330,6 @@ if __name__ == '__main__':
 
     refine_dict = model['refine'].state_dict()
     if opt.refine_reload == 1:
-        # model_path = sorted(glob.glob(os.path.join(opt.previous_dir, '*.pth')))
-        #
-        # refine_path = []
-        # for path in model_path:
-        #     if path.split('/')[-1][0] == 'r':
-        #         refine_path = path
-        #         print(refine_path)
-        #         break
 
         refine_path = opt.previous_refine_name
 
