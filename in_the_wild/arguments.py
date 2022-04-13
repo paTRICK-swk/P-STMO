@@ -76,7 +76,7 @@ def parse_args():
     parser.add_argument('--video', dest='input_video', type=str, default='', help='input video name')
 
     parser.add_argument('--layers', default=3, type=int)
-    parser.add_argument('--channle', default=256, type=int)
+    parser.add_argument('--channel', default=256, type=int)
     parser.add_argument('--d_hid', default=512, type=int)
     parser.add_argument('-f', '--frames', type=int, default=243)
     parser.add_argument('--n_joints', type=int, default=17)
