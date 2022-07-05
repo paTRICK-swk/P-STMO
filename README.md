@@ -1,4 +1,4 @@
-# P-STMO
+# P-STMO: Pre-Trained Spatial Temporal Many-to-One Model for 3D Human Pose Estimation [ECCV2022]
 <p align="center"><img src="demo/overview.png", width="600" alt="" /></p>
 The PyTorch implementation for <a href="https://arxiv.org/pdf/2203.07628.pdf">"P-STMO: Pre-Trained Spatial Temporal Many-to-One Model for 3D Human Pose Estimation"</a> .
 
