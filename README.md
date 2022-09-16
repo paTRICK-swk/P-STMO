@@ -32,7 +32,7 @@ Our model is evaluated on [Human3.6M](http://vision.imar.ro/human3.6m) and [MPI-
 We set up the Human3.6M dataset in the same way as [VideoPose3D](https://github.com/facebookresearch/VideoPose3D/blob/master/DATASETS.md).  You can download the processed data from [here](https://drive.google.com/file/d/1FMgAf_I04GlweHMfgUKzB0CMwglxuwPe/view?usp=sharing).  `data_2d_h36m_gt.npz` is the ground truth of 2D keypoints. `data_2d_h36m_cpn_ft_h36m_dbb.npz` is the 2D keypoints obatined by [CPN](https://github.com/GengDavid/pytorch-cpn).  `data_3d_h36m.npz` is the ground truth of 3D human joints. Put them in the `./dataset` directory.
 
 ### MPI-INF-3DHP
-We set up the MPI-INF-3DHP dataset by ourselves. We convert the original data in `.mat` format to the processed data in `.npz` format by using `data_to_npz_3dhp.py` and `data_to_npz_3dhp_test.py`. You can download the processed data from [here](https://drive.google.com/file/d/11eBe175Rgj6IYrwZwa1oXTOyHPxGuWyi/view?usp=sharing). Put them in the `./dataset` directory.
+We set up the MPI-INF-3DHP dataset by ourselves. We convert the original data in `.mat` format to the processed data in `.npz` format by using `data_to_npz_3dhp.py` and `data_to_npz_3dhp_test.py`. You can download the processed data from [here](https://drive.google.com/file/d/11eBe175Rgj6IYrwZwa1oXTOyHPxGuWyi/view?usp=sharing). Put them in the `./dataset` directory. In addition, if you want to get the PCK and AUC metrics on this dataset, you also need to download the original dataset from the [official website](https://vcai.mpi-inf.mpg.de/3dhp-dataset/). After downloading the dataset, you can place the `TS1` to `TS6` folders in the test set under the `./3dhp_test` folder in this repo. 
 
 ## Evaluating our models
 You can download our pre-trained models from [here](https://drive.google.com/file/d/1vLtC86_hs01JKKRQ6akvdH5QDKxt71cY/view?usp=sharing). Put them in the `./checkpoint` directory. 
@@ -65,7 +65,7 @@ To evaluate our P-STMO-S model on MPI-INF-3DHP dataset, please run:
 ```bash
 python run_3dhp.py -f 81 --reload 1 --previous_dir checkpoint/PSTMOS_no_refine_50_3203_3dhp.pth
 ```
-After that, the 3D pose predictions are saved as `checkpoint/inference_data.mat`. These results can be evaluated using Matlab by running `3dhp_test/test_util/mpii_test_predictions_py.m`. The final evaluation results are obtained by averaging sequencewise evaluation results over the number of frames.
+After that, the 3D pose predictions are saved as `./checkpoint/inference_data.mat`. These results can be evaluated using Matlab by running `./3dhp_test/test_util/mpii_test_predictions_py.m`. The final evaluation results can be found in `./3dhp_test/mpii_3dhp_evaluation_sequencewise.xlsx`, which is obtained by averaging sequencewise evaluation results over the number of frames. For visualization, you can use `./common/draw_3d_keypoint_3dhp.py` and `./common/draw_2d_keypoint_3dhp.py`.
 
 ## Training from scratch
 ### Human 3.6M
