@@ -65,7 +65,7 @@ To evaluate our P-STMO-S model on MPI-INF-3DHP dataset, please run:
 ```bash
 python run_3dhp.py -f 81 --reload 1 --previous_dir checkpoint/PSTMOS_no_refine_50_3203_3dhp.pth
 ```
-After that, the 3D pose predictions are saved as `./checkpoint/inference_data.mat`. These results can be evaluated using Matlab by running `./3dhp_test/test_util/mpii_test_predictions_py.m`. The final evaluation results can be found in `./3dhp_test/mpii_3dhp_evaluation_sequencewise.xlsx`, which is obtained by averaging sequencewise evaluation results over the number of frames. For visualization, you can use `./common/draw_3d_keypoint_3dhp.py` and `./common/draw_2d_keypoint_3dhp.py`.
+After that, the 3D pose predictions are saved as `./checkpoint/inference_data.mat`. These results can be evaluated using Matlab by running `./3dhp_test/test_util/mpii_test_predictions_py.m`. The final evaluation results can be found in `./3dhp_test/mpii_3dhp_evaluation_sequencewise.csv`, which is obtained by averaging sequencewise evaluation results over the number of frames. For visualization, you can use `./common/draw_3d_keypoint_3dhp.py` and `./common/draw_2d_keypoint_3dhp.py`.
 
 ## Training from scratch
 ### Human 3.6M
@@ -133,11 +133,13 @@ Note that the frame rate of Human3.6M dataset is 50 fps, while most of the video
 ## Citation
 If you find this repo useful, please consider citing our paper:
 ```
-@article{shan2022p,
-  title={P-STMO: Pre-Trained Spatial Temporal Many-to-One Model for 3D Human Pose Estimation},
+@inproceedings{shan2022p,
+  title={P-stmo: Pre-trained spatial temporal many-to-one model for 3d human pose estimation},
   author={Shan, Wenkang and Liu, Zhenhua and Zhang, Xinfeng and Wang, Shanshe and Ma, Siwei and Gao, Wen},
-  journal={arXiv preprint arXiv:2203.07628},
-  year={2022}
+  booktitle={Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part V},
+  pages={461--478},
+  year={2022},
+  organization={Springer}
 }
 ```
 
